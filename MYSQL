@@ -1,0 +1,45 @@
+DROP DATABASE IF EXISTS mediateca;
+CREATE DATABASE IF NOT EXISTS mediateca;
+USE mediateca;
+
+-- Tabla Libros
+CREATE TABLE Libros (
+    codigo VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(100),
+    autor VARCHAR(40),
+    paginas INT,
+    editorial VARCHAR(40),
+    isbn VARCHAR(40),
+    anio_publicacion INT,
+    unidades_disponibles INT
+);
+
+-- Tabla Revistas
+CREATE TABLE Revistas (
+    codigo VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(100),
+    editorial VARCHAR(40),
+    fecha_publicacion DATE,
+    unidades_disponibles INT
+);
+
+-- Tabla CD
+CREATE TABLE CD (
+    codigo VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(100),
+    artista VARCHAR(40),
+    genero VARCHAR(20),
+    duracion VARCHAR(20),
+    num_canciones INT,
+    unidades_disponibles INT
+);
+
+-- Tabla DVDs
+CREATE TABLE DVDs (
+    codigo VARCHAR(10) PRIMARY KEY,
+    titulo VARCHAR(100),
+    director VARCHAR(40),
+    duracion VARCHAR(20),
+    genero VARCHAR(10),
+    unidades_disponibles INT
+);
