@@ -89,8 +89,8 @@ public class Conexion {
                 ps.setString(1, r.getCodigo());
                 ps.setString(2, r.getTitulo());
                 ps.setString(3, r.getEditorial());
-                ps.setDate(5, Date.valueOf(r.getFechaPublicacion()));
-                ps.setInt(6, r.getUnidadesDisponibles());
+                ps.setDate(4, Date.valueOf(r.getFechaPublicacion()));
+                ps.setInt(5, r.getUnidadesDisponibles());
                 ps.executeUpdate();
                 ps.close();
             } else if (m instanceof CD) {
@@ -119,6 +119,7 @@ public class Conexion {
             }
         } catch (SQLException e) {
             System.err.println("Error guardando: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -142,9 +143,9 @@ public class Conexion {
                 Revista r = (Revista) m;
                 ps.setString(1, r.getTitulo());
                 ps.setString(2, r.getEditorial());
-                ps.setDate(4, Date.valueOf(r.getFechaPublicacion()));
-                ps.setInt(5, r.getUnidadesDisponibles());
-                ps.setString(6, r.getCodigo());
+                ps.setDate(3, Date.valueOf(r.getFechaPublicacion()));
+                ps.setInt(4, r.getUnidadesDisponibles());
+                ps.setString(5, r.getCodigo());
                 ps.executeUpdate();
                 ps.close();
             } else if (m instanceof CD) {
@@ -173,6 +174,7 @@ public class Conexion {
             }
         } catch (SQLException e) {
             System.err.println("Error actualizando: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -181,7 +183,7 @@ public class Conexion {
             String query = "";
             if (tipo.equals("Libro")) query = "DELETE FROM Libros WHERE codigo=?";
             else if (tipo.equals("Revista")) query = "DELETE FROM Revistas WHERE codigo=?";
-            else if (tipo.equals("CDAudio")) query = "DELETE FROM CD WHERE codigo=?";
+            else if (tipo.equals("CD")) query = "DELETE FROM CD WHERE codigo=?";
             else if (tipo.equals("DVD")) query = "DELETE FROM DVDs WHERE codigo=?";
 
             PreparedStatement ps = conn.prepareStatement(query);
@@ -190,6 +192,7 @@ public class Conexion {
             ps.close();
         } catch (SQLException e) {
             System.err.println("Error borrando: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
